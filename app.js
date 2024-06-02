@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 var app = express();
 
-app.use(bodyParser.json()); // 이 줄을 추가하세요
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: false })); // 이 줄을 추가하세요
 
 
