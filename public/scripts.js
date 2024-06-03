@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // TTS 메시지를 보내는 함수 (웹뷰 환경에서 메시지 전달)
     function sendTTSMessage(message) {
         if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+            console.log('Sending message to React Native:', message); // 로그 추가
             window.ReactNativeWebView.postMessage(message);
         } else if ('speechSynthesis' in window) {
-            // 웹 환경에서의 TTS
             const utterance = new SpeechSynthesisUtterance(message);
             speechSynthesis.speak(utterance);
         }
