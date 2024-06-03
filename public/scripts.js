@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // TTS 메시지를 보내는 함수 (웹뷰 환경에서 메시지 전달)
     function sendTTSMessage(message) {
-        if (window.ReactNativeWebView) {
+        if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
             window.ReactNativeWebView.postMessage(message);
         } else if ('speechSynthesis' in window) {
             // 웹 환경에서의 TTS
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 주기적으로 YOLO 결과를 가져오기 (예: 10초마다)
     setInterval(fetchYOLOResults, 10000);
 
-    // 임의의 신호 타입을 사용한 알림 테스트
+    // 테스트 알림 버튼 클릭 시 TTS 메시지 보내기
     document.getElementById('test-notification').addEventListener('click', () => {
         sendTTSMessage('우측에 보행자가 있습니다. 주의하세요.');
     });
